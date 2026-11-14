@@ -3,6 +3,7 @@ package com.fluento.lessons.catalog;
 import com.fluento.lessons.builder.LessonBuilder;
 import com.fluento.lessons.factory.*;
 import com.fluento.model.*;
+import com.fluento.session.HintDecorator;
 import java.util.*;
 
 public final class DemoLessonCatalog implements LessonCatalog {
@@ -57,11 +58,22 @@ public final class DemoLessonCatalog implements LessonCatalog {
         ExerciseCreator translations = new TranslationExerciseCreator();
         ExerciseCreator choices = new MultipleChoiceExerciseCreator(words);
         Lesson lesson = new LessonBuilder().id(id).title(title)
-                .addExercises(translations.createExercises(words))
-                .addExercises(choices.createExercises(words))
+                .addExercises(exercisesWithHints(translations, words))
+                .addExercises(exercisesWithHints(choices, words))
                 .build();
         lessons.put(id, lesson);
         vocabulary.put(id, List.copyOf(words));
+    }
+
+    private List<Exercise> exercisesWithHints(ExerciseCreator creator, List<Word> words) {
+        List<Exercise> exercises = new ArrayList<>();
+        for (Word word : words) {
+            String english = word.english().strip();
+            String hint = "First letter: " + english.substring(0, 1)
+                    + ". Length: " + english.length() + " letters.";
+            exercises.add(new HintDecorator(creator.createExercise(word), hint));
+        }
+        return exercises;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class LessonFacade {
     private final AnswerListener listener;
     private int exerciseIndex;
     private int score;
-    private boolean answered;
+    private AnswerResult currentResult;
 
     public LessonFacade(Lesson lesson) {
         this(lesson, null);
@@ -31,13 +31,17 @@ public class LessonFacade {
     }
 
     public AnswerResult submitAnswer(String answer) {
-        if (answered) {
+        Exercise exercise = activeExercise();
+        if (hasAnsweredCurrentExercise()) {
             throw new IllegalStateException("This exercise has already been answered");
         }
 
-        Exercise exercise = activeExercise();
+        if (answer == null || answer.isBlank()) {
+            throw new IllegalArgumentException("Enter or select an answer.");
+        }
+
         AnswerResult result = exercise.checkAnswer(answer);
-        answered = true;
+        currentResult = result;
         if (result.correct()) {
             score++;
         }
@@ -49,12 +53,12 @@ public class LessonFacade {
 
     public void nextExercise() {
         requireActiveLesson();
-        if (!answered) {
+        if (!hasAnsweredCurrentExercise()) {
             throw new IllegalStateException("Answer the current exercise first");
         }
 
         exerciseIndex++;
-        answered = false;
+        currentResult = null;
     }
 
     public boolean isComplete() {
@@ -66,7 +70,7 @@ public class LessonFacade {
     }
 
     public int answeredCount() {
-        return exerciseIndex + (answered ? 1 : 0);
+        return exerciseIndex + (hasAnsweredCurrentExercise() ? 1 : 0);
     }
 
     public int exerciseCount() {
@@ -74,7 +78,11 @@ public class LessonFacade {
     }
 
     public boolean hasAnsweredCurrentExercise() {
-        return answered;
+        return currentResult != null;
+    }
+
+    public String currentFeedback() {
+        return hasAnsweredCurrentExercise() ? currentResult.feedback() : "";
     }
 
     private Exercise activeExercise() {

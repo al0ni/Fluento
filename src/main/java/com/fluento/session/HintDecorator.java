@@ -15,7 +15,7 @@ public class HintDecorator implements Exercise {
         if (hint == null || hint.isBlank()) {
             throw new IllegalArgumentException("Hint must contain text");
         }
-        this.hint = hint;
+        this.hint = hint.strip();
     }
 
     @Override
