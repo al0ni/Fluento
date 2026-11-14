@@ -3,6 +3,7 @@ package com.fluento.session;
 import com.fluento.model.AnswerResult;
 import com.fluento.model.Exercise;
 import com.fluento.model.ExerciseView;
+import java.util.Objects;
 import java.util.Optional;
 
 public class HintDecorator implements Exercise {
@@ -10,7 +11,10 @@ public class HintDecorator implements Exercise {
     private final String hint;
 
     public HintDecorator(Exercise exercise, String hint) {
-        this.exercise = exercise;
+        this.exercise = Objects.requireNonNull(exercise, "Exercise is required");
+        if (hint == null || hint.isBlank()) {
+            throw new IllegalArgumentException("Hint must contain text");
+        }
         this.hint = hint;
     }
 
