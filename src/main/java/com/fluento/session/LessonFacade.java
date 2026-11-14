@@ -4,6 +4,7 @@ import com.fluento.model.AnswerResult;
 import com.fluento.model.Exercise;
 import com.fluento.model.ExerciseView;
 import com.fluento.model.Lesson;
+import java.util.Objects;
 
 public class LessonFacade {
     public interface AnswerListener {
@@ -21,7 +22,7 @@ public class LessonFacade {
     }
 
     public LessonFacade(Lesson lesson, AnswerListener listener) {
-        this.lesson = lesson;
+        this.lesson = Objects.requireNonNull(lesson, "Lesson is required");
         this.listener = listener;
     }
 
@@ -57,11 +58,23 @@ public class LessonFacade {
     }
 
     public boolean isComplete() {
-        return exerciseIndex == lesson.exercises().size();
+        return exerciseIndex == exerciseCount();
     }
 
     public int score() {
         return score;
+    }
+
+    public int answeredCount() {
+        return exerciseIndex + (answered ? 1 : 0);
+    }
+
+    public int exerciseCount() {
+        return lesson.exercises().size();
+    }
+
+    public boolean hasAnsweredCurrentExercise() {
+        return answered;
     }
 
     private Exercise activeExercise() {
