@@ -1,6 +1,5 @@
 package com.fluento.session;
 
-import com.fluento.model.AnswerResult;
 import com.fluento.model.ExerciseView;
 import java.awt.GridLayout;
 import javax.swing.*;
@@ -45,13 +44,8 @@ public final class LessonSessionPanel extends JPanel {
             return;
         }
 
-        AnswerResult result = session.submitAnswer(value);
-        feedback.setText(result.feedback());
-        answer.setEnabled(false);
-        options.setEnabled(false);
-        hint.setEnabled(false);
-        submit.setEnabled(false);
-        next.setEnabled(true);
+        session.submitAnswer(value);
+        showExercise();
     }
 
     private void showExercise() {
@@ -70,20 +64,30 @@ public final class LessonSessionPanel extends JPanel {
         }
 
         ExerciseView view = session.currentExercise();
-        progress.setText("Exercise " + (session.answeredCount() + 1) + " / " + session.exerciseCount());
-        prompt.setText(view.prompt());
-        answer.setText("");
-        answer.setEnabled(true);
-        options.setEnabled(true);
-        options.removeAllItems();
-        for (String option : view.options()) {
-            options.addItem(option);
+        boolean answered = session.hasAnsweredCurrentExercise();
+        int number = answered ? session.answeredCount() : session.answeredCount() + 1;
+        progress.setText("Exercise " + number + " / " + session.exerciseCount());
+        submit.setEnabled(!answered);
+        next.setEnabled(answered);
+        if (answered) {
+            feedback.setText(session.currentFeedback());
+        } else {
+            answer.setText("");
         }
-        options.setSelectedIndex(-1);
-        answer.setVisible(view.options().isEmpty());
-        options.setVisible(!view.options().isEmpty());
-        hint.setVisible(view.hint().isPresent());
-        hint.setEnabled(true);
-        next.setText(session.answeredCount() + 1 == session.exerciseCount() ? "Finish" : "Next");
+        prompt.setText(view.prompt());
+        answer.setEnabled(!answered);
+        options.setEnabled(!answered);
+        if (!answered) {
+            options.removeAllItems();
+            for (String option : view.options()) {
+                options.addItem(option);
+            }
+            options.setSelectedIndex(-1);
+        }
+        answer.setVisible(!answered && view.options().isEmpty());
+        options.setVisible(!answered && !view.options().isEmpty());
+        hint.setVisible(!answered && view.hint().isPresent());
+        hint.setEnabled(!answered);
+        next.setText(number == session.exerciseCount() ? "Finish" : "Next");
     }
 }
