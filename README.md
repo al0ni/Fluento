@@ -45,9 +45,9 @@ The first four topics contain four words and eight exercises each. The remaining
 
 ## Run the application
 
-### Prepared build
+### Launch after building
 
-Install Java 21 or newer and extract the complete application archive.
+The GitHub source ZIP does not contain a prebuilt JAR. Install JDK 21 and Maven, extract the ZIP, and run BUILD-FLUENTO.cmd first. This builds and verifies the application and creates dist/fluento.jar.
 
 On Windows, run:
 
@@ -107,7 +107,7 @@ A skipped exercise counts as an incorrect attempt and becomes eligible for weak-
 | Practice | Enter | Check answer / continue |
 | Practice | Alt+H | Show / hide hint |
 | Practice | Alt+S | Skip the exercise |
-| Practice | Alt+1–4 | Select an answer option |
+| Practice | Alt+1вЂ“4 | Select an answer option |
 | Controls | Tab | Move keyboard focus |
 | Focused button | Space | Activate the button |
 
@@ -128,30 +128,30 @@ Our catalog creates exercises through Factory Method, decorates them and assembl
 
 ```text
 src/
-├── main/
-│   ├── java/com/fluento/
-│   │   ├── Main.java
-│   │   ├── factory/
-│   │   │   └── model/
-│   │   ├── builder/
-│   │   │   └── catalog/
-│   │   ├── strategy/
-│   │   ├── observer/
-│   │   ├── decorator/
-│   │   └── facade/
-│   │       ├── ui/
-│   │       └── demo/
-│   └── resources/lessons/
-└── test/java/com/fluento/
-    ├── factory/
-    ├── builder/
-    ├── strategy/
-    ├── observer/
-    └── facade/
+в”њв”Ђв”Ђ main/
+в”‚   в”њв”Ђв”Ђ java/com/fluento/
+в”‚   в”‚   в”њв”Ђв”Ђ Main.java
+в”‚   в”‚   в”њв”Ђв”Ђ factory/
+в”‚   в”‚   в”‚   в””в”Ђв”Ђ model/
+в”‚   в”‚   в”њв”Ђв”Ђ builder/
+в”‚   в”‚   в”‚   в””в”Ђв”Ђ catalog/
+в”‚   в”‚   в”њв”Ђв”Ђ strategy/
+в”‚   в”‚   в”њв”Ђв”Ђ observer/
+в”‚   в”‚   в”њв”Ђв”Ђ decorator/
+в”‚   в”‚   в””в”Ђв”Ђ facade/
+в”‚   в”‚       в”њв”Ђв”Ђ ui/
+в”‚   в”‚       в””в”Ђв”Ђ demo/
+в”‚   в””в”Ђв”Ђ resources/lessons/
+в””в”Ђв”Ђ test/java/com/fluento/
+    в”њв”Ђв”Ђ factory/
+    в”њв”Ђв”Ђ builder/
+    в”њв”Ђв”Ђ strategy/
+    в”њв”Ђв”Ђ observer/
+    в””в”Ђв”Ђ facade/
 
 docs/
-├── screenshots/
-└── uml/
+в”њв”Ђв”Ђ screenshots/
+в””в”Ђв”Ђ uml/
 ```
 
 ## Progress and review rules
@@ -190,8 +190,8 @@ Our final local verification completed **915 tests with zero failures, errors or
 
 | Coverage measure | Result |
 |---|---|
-| Lines | 643 / 695 — 92.5% |
-| Branches | 263 / 310 — 84.8% |
+| Lines | 643 / 695 вЂ” 92.5% |
+| Branches | 263 / 310 вЂ” 84.8% |
 
 The suite includes exercise checks in all three source languages, review ordering, decorators, progress notifications, session boundaries, restart behavior, topic search and Swing workflows.
 
@@ -212,9 +212,9 @@ The repository includes a GitHub Actions workflow for Java 21 verification. The 
 
 ## Documentation
 
-- `docs/uml/` — editable UML diagrams.
-- `docs/screenshots/` — application screenshots.
-- `docs/VERIFICATION.md` — verification results.
+- `docs/uml/` вЂ” editable UML diagrams.
+- `docs/screenshots/` вЂ” application screenshots.
+- `docs/VERIFICATION.md` вЂ” verification results.
 ## Limitations and further work
 
 The current version does not include accounts, persistent storage, pronunciation audio or timed spaced repetition. Answer checking uses normalized exact English matches rather than synonyms or spelling correction.
