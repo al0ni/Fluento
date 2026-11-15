@@ -1,0 +1,32 @@
+package com.fluento.progress;
+
+import java.util.Map;
+
+public record ProgressSnapshot(
+        int correct,
+        int incorrect,
+        Map<String, Integer> mistakesByExerciseId
+) {
+    public ProgressSnapshot {
+        if (correct < 0 || incorrect < 0) {
+            throw new IllegalArgumentException("Counters must not be negative");
+        }
+        mistakesByExerciseId = Map.copyOf(mistakesByExerciseId);
+    }
+
+    public static ProgressSnapshot empty() {
+        return new ProgressSnapshot(0, 0, Map.of());
+    }
+
+    public int total() {
+        return correct + incorrect;
+    }
+
+    public double accuracyPercent() {
+        return total() == 0 ? 0.0 : correct * 100.0 / total();
+    }
+
+    public int mistakesFor(String exerciseId) {
+        return mistakesByExerciseId.getOrDefault(exerciseId, 0);
+    }
+}
