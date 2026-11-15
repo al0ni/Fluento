@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="500" height="490" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 490" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="490"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-490)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="2" y="450" width="66" height="30" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(94%,92%,98%); fill-rule: evenodd;"/>
+			<text x="31.413" y="469" style="font-family: Times-Roman; font-size: 6.8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,938) scale(1,-1)">UI</text>
+			<path d="M 35,450 L 35,45 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.6; stroke-dasharray: 3, 3;"/>
+			<rect x="102" y="450" width="66" height="30" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(94%,92%,98%); fill-rule: evenodd;"/>
+			<text x="115.739" y="469" style="font-family: Times-Roman; font-size: 6.8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,938) scale(1,-1)">LessonFacade</text>
+			<path d="M 135,450 L 135,45 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.6; stroke-dasharray: 3, 3;"/>
+			<rect x="217" y="450" width="66" height="30" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(94%,92%,98%); fill-rule: evenodd;"/>
+			<text x="236.0294" y="469" style="font-family: Times-Roman; font-size: 6.8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,938) scale(1,-1)">Decorated</text>
+			<text x="238.2938" y="459" style="font-family: Times-Roman; font-size: 6.8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,918) scale(1,-1)">Exercise</text>
+			<path d="M 250,450 L 250,45 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.6; stroke-dasharray: 3, 3;"/>
+			<rect x="332" y="450" width="66" height="30" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(94%,92%,98%); fill-rule: evenodd;"/>
+			<text x="342.7198" y="469" style="font-family: Times-Roman; font-size: 6.8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,938) scale(1,-1)">ProgressTracker</text>
+			<path d="M 365,450 L 365,45 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.6; stroke-dasharray: 3, 3;"/>
+			<rect x="432" y="450" width="66" height="30" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(94%,92%,98%); fill-rule: evenodd;"/>
+			<text x="451.2164" y="469" style="font-family: Times-Roman; font-size: 6.8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,938) scale(1,-1)">Observers</text>
+			<path d="M 465,450 L 465,45 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.6; stroke-dasharray: 3, 3;"/>
+			<path d="M 35,410 L 135,410 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 135,410 L 126,406 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 135,410 L 126,414 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="50.4753" y="418" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,836) scale(1,-1)">submitAnswer(answer)</text>
+			<text x="140" y="383" style="font-family: Times-Roman; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,766) scale(1,-1)">Validate state and input</text>
+			<path d="M 135,350 L 250,350 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 250,350 L 241,346 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 250,350 L 241,354 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="159.422" y="358" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,716) scale(1,-1)">checkAnswer(answer)</text>
+			<path d="M 250,315 L 135,315 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 135,315 L 144,319 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 135,315 L 144,311 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="171.5358" y="323" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,646) scale(1,-1)">AnswerResult</text>
+			<text x="140" y="287" style="font-family: Times-Roman; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,574) scale(1,-1)">Save result and round score</text>
+			<path d="M 135,255 L 365,255 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 365,255 L 356,251 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 365,255 L 356,259 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="213.629" y="263" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,526) scale(1,-1)">recordAnswer(id, result)</text>
+			<text x="290" y="228" style="font-family: Times-Roman; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,456) scale(1,-1)">Update counters; queue snapshot</text>
+			<path d="M 365,195 L 465,195 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 465,195 L 456,191 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 465,195 L 456,199 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="386.0216" y="203" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,406) scale(1,-1)">onProgressUpdated</text>
+			<text x="292" y="170" style="font-family: Times-Roman; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,340) scale(1,-1)">Repeat for each subscriber;</text>
+			<text x="292" y="158" style="font-family: Times-Roman; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,316) scale(1,-1)">isolate callback failures.</text>
+			<path d="M 135,125 L 35,125 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 35,125 L 44,129 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 35,125 L 44,121 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="64.0358" y="133" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,266) scale(1,-1)">AnswerResult</text>
+			<path d="M 35,75 L 135,75 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 135,75 L 126,71 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 135,75 L 126,79 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="47.604099999999995" y="83" style="font-family: Times-Roman; font-size: 7.4px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,166) scale(1,-1)">nextExercise() after Next</text>
+			<text x="10" y="16" style="font-family: Times-Roman; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,32) scale(1,-1)">ReviewSession chooses order at facade construction, before this answer sequence.</text>
+		</g>
+	</g>
+</svg>

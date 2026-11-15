@@ -1,0 +1,36 @@
+@startuml
+title Decorator and Facade
+skinparam classAttributeIconSize 0
+interface Exercise
+class HintDecorator {
+-exercise: Exercise
++id()
++view()
++checkAnswer(answer)
+}
+class FeedbackDecorator {
+-exercise: Exercise
++id()
++view()
++checkAnswer(answer)
+}
+Exercise <|.. HintDecorator
+Exercise <|.. FeedbackDecorator
+HintDecorator o-- Exercise : wraps
+FeedbackDecorator o-- Exercise : wraps
+class LessonFacade {
++submitAnswer(answer): AnswerResult
++nextExercise()
++isComplete(): boolean
++progress(): ProgressSnapshot
+}
+class LessonSessionPanel
+class ReviewSession
+class ProgressTracker
+class Lesson
+LessonSessionPanel --> LessonFacade : calls
+LessonFacade --> Lesson : holds
+LessonFacade ..> ReviewSession : orders at construction
+LessonFacade --> Exercise : checks current
+LessonFacade --> ProgressTracker : records answer
+@enduml

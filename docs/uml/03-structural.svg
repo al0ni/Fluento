@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="500" height="475" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 475" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="475"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-475)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="175" y="380" width="150" height="67" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="225.316" y="431" style="font-family: Helvetica-Oblique; font-size: 8px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,862) scale(1,-1)">&lt;&lt;interface&gt;&gt;</text>
+			<text x="231.487" y="419" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,838) scale(1,-1)">Exercise</text>
+			<path d="M 175,404 L 325,404 Z" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.5;"/>
+			<text x="183" y="391" style="font-family: Times-Roman; font-size: 8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,782) scale(1,-1)">id / view / checkAnswer</text>
+			<rect x="10" y="275" width="200" height="55" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="79.9985" y="314" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,628) scale(1,-1)">HintDecorator</text>
+			<path d="M 10,299 L 210,299 Z" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.5;"/>
+			<text x="18" y="286" style="font-family: Times-Roman; font-size: 8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,572) scale(1,-1)">exercise: Exercise</text>
+			<rect x="290" y="275" width="200" height="55" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="347.988" y="314" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,628) scale(1,-1)">FeedbackDecorator</text>
+			<path d="M 290,299 L 490,299 Z" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.5;"/>
+			<text x="298" y="286" style="font-family: Times-Roman; font-size: 8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,572) scale(1,-1)">exercise: Exercise</text>
+			<path d="M 110,330 L 200,380 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<polygon points="200 380, 194.0752 372.1326, 190.19 379.1258" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 390,330 L 300,380 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<polygon points="300 380, 309.81 379.1258, 305.9248 372.1326" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 30,330 L 175,415 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 175,415 L 169.258596,406.997733 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 175,415 L 165.21284,413.899316 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="107.5" y="378.5" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,757) scale(1,-1)">wraps</text>
+			<path d="M 470,330 L 325,415 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 325,415 L 334.78716,413.899316 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 325,415 L 330.741404,406.997733 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="402.5" y="378.5" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,757) scale(1,-1)">wraps</text>
+			<rect x="10" y="155" width="160" height="42" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="44.982" y="181" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,362) scale(1,-1)">LessonSessionPanel</text>
+			<rect x="285" y="135" width="205" height="81" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="356.2385" y="200" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,400) scale(1,-1)">LessonFacade</text>
+			<path d="M 285,185 L 490,185 Z" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.5;"/>
+			<text x="293" y="172" style="font-family: Times-Roman; font-size: 8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,344) scale(1,-1)">+ submitAnswer(answer)</text>
+			<text x="293" y="159" style="font-family: Times-Roman; font-size: 8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,318) scale(1,-1)">+ nextExercise() / isComplete()</text>
+			<text x="293" y="146" style="font-family: Times-Roman; font-size: 8px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,292) scale(1,-1)">+ progress()</text>
+			<path d="M 170,176 L 285,176 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 285,176 L 276,172 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 285,176 L 276,180 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="232.5" y="182.0" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,364) scale(1,-1)">calls</text>
+			<rect x="10" y="30" width="135" height="42" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="44.735499999999995" y="56" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,112) scale(1,-1)">ReviewSession</text>
+			<rect x="185" y="30" width="130" height="42" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="214.23399999999998" y="56" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,112) scale(1,-1)">ProgressTracker</text>
+			<rect x="360" y="30" width="130" height="42" rx="3" ry="0" style="stroke: rgb(36%,28%,78%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="409.2455" y="56" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(13%,15%,22%); stroke:none;" transform="translate(0,112) scale(1,-1)">Lesson</text>
+			<path d="M 315,135 L 100,72 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 100,72 L 107.512046,78.369393 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 100,72 L 109.761642,70.692199 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="212.5" y="109.5" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,219) scale(1,-1)">orders</text>
+			<path d="M 370,135 L 250,72 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 250,72 L 256.109246,79.725097 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 250,72 L 259.827917,72.641913 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="315.0" y="109.5" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,219) scale(1,-1)">records</text>
+			<path d="M 450,135 L 425,72 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 425,72 L 424.601647,81.840798 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 425,72 L 432.037573,78.890034 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="442.5" y="109.5" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,219) scale(1,-1)">holds</text>
+			<path d="M 490,180 L 497,180 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 1; stroke-dasharray: 4, 3;"/>
+			<path d="M 497,180 L 497,460 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 1; stroke-dasharray: 4, 3;"/>
+			<path d="M 497,460 L 325,430 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 325,430 L 333.17885,435.486931 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 325,430 L 334.553446,427.605911 Z" style="stroke: rgb(38%,41%,49%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="416.0" y="451.0" style="font-family: Times-Roman; font-size: 7.5px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,902) scale(1,-1)">checks Exercise</text>
+			<text x="8" y="7" style="font-family: Times-Roman; font-size: 7px;fill: rgb(38%,41%,49%); stroke:none;" transform="translate(0,14) scale(1,-1)">Hollow triangle: inheritance / realization. Dashed arrow: dependency. Solid arrow: association.</text>
+		</g>
+	</g>
+</svg>
