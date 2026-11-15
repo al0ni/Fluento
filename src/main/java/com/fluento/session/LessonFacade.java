@@ -5,6 +5,12 @@ import com.fluento.model.Exercise;
 import com.fluento.model.ExerciseView;
 import com.fluento.model.Lesson;
 import java.util.Objects;
+import java.util.List;
+import com.fluento.progress.ProgressTracker;
+import com.fluento.progress.ProgressSnapshot;
+import com.fluento.review.ReviewSession;
+import com.fluento.review.ReviewStrategy;
+import com.fluento.review.SequentialReviewStrategy;
 
 public class LessonFacade {
     public interface AnswerListener {
@@ -13,17 +19,30 @@ public class LessonFacade {
 
     private final Lesson lesson;
     private final AnswerListener listener;
+    private final ProgressTracker tracker;
+    private final List<Exercise> exercises;
     private int exerciseIndex;
     private int score;
     private AnswerResult currentResult;
 
     public LessonFacade(Lesson lesson) {
-        this(lesson, null);
+        this(lesson, new SequentialReviewStrategy(), new ProgressTracker(), null);
     }
 
     public LessonFacade(Lesson lesson, AnswerListener listener) {
+        this(lesson, new SequentialReviewStrategy(), new ProgressTracker(), listener);
+    }
+
+    public LessonFacade(Lesson lesson, ReviewStrategy strategy, ProgressTracker tracker) {
+        this(lesson, strategy, tracker, null);
+    }
+
+    public LessonFacade(Lesson lesson, ReviewStrategy strategy, ProgressTracker tracker, AnswerListener listener) {
         this.lesson = Objects.requireNonNull(lesson, "Lesson is required");
         this.listener = listener;
+        this.tracker = Objects.requireNonNull(tracker, "tracker");
+        this.exercises = new ReviewSession(lesson.exercises(), strategy)
+                .orderedExercises(tracker.snapshot().mistakesByExerciseId());
     }
 
     public ExerciseView currentExercise() {
@@ -41,14 +60,38 @@ public class LessonFacade {
         }
 
         AnswerResult result = exercise.checkAnswer(answer);
+        return recordResult(exercise, result);
+    }
+
+    private AnswerResult recordResult(Exercise exercise, AnswerResult result) {
+        Objects.requireNonNull(result, "result");
         currentResult = result;
         if (result.correct()) {
             score++;
         }
+        tracker.recordAnswer(exercise.id(), result);
         if (listener != null) {
-            listener.onAnswer(lesson.id(), exercise.id(), result);
+            try {
+                listener.onAnswer(lesson.id(), exercise.id(), result);
+            } catch (RuntimeException error) {
+                System.err.println("Answer listener failed: " + error.getMessage());
+            }
         }
         return result;
+    }
+
+    
+    public AnswerResult skipAnswer() {
+        activeExercise();
+        if (hasAnsweredCurrentExercise()) throw new IllegalStateException("Already answered");
+        return recordResult(activeExercise(), new AnswerResult(false,
+                "Skipped.\n\n" + activeExercise().checkAnswer("").feedback()));
+    }
+
+    public void restart() {
+        exerciseIndex = 0;
+        score = 0;
+        currentResult = null;
     }
 
     public void nextExercise() {
@@ -74,8 +117,14 @@ public class LessonFacade {
     }
 
     public int exerciseCount() {
-        return lesson.exercises().size();
+        return exercises.size();
     }
+
+    public String currentExerciseId() { return activeExercise().id(); }
+
+    public ProgressSnapshot progress() { return tracker.snapshot(); }
+
+    public String lessonTitle() { return lesson.title(); }
 
     public boolean hasAnsweredCurrentExercise() {
         return currentResult != null;
@@ -87,7 +136,7 @@ public class LessonFacade {
 
     private Exercise activeExercise() {
         requireActiveLesson();
-        return lesson.exercises().get(exerciseIndex);
+        return exercises.get(exerciseIndex);
     }
 
     private void requireActiveLesson() {
