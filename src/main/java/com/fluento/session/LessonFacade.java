@@ -80,7 +80,7 @@ public class LessonFacade {
         return result;
     }
 
-    
+
     public AnswerResult skipAnswer() {
         activeExercise();
         if (hasAnsweredCurrentExercise()) throw new IllegalStateException("Already answered");
