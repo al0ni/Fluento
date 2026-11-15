@@ -1,160 +1,223 @@
 # Fluento
 
-English practice with six coordinated design patterns. Java 21, Maven, Swing, JUnit 5.
+Fluento is our desktop application for learning English vocabulary. We built it with Java 21 and Swing and integrated six design patterns into one learning workflow.
 
+The application includes **16 topics, 112 words and 224 exercises per source-language mode**. Learners can study from Russian translations, Kazakh translations or English definitions.
 
+## Team
 
-## Run the prepared application
+**Group: SE-2509**
 
-1. Install Java 21 or newer.
+| Team member | Assigned patterns | Main responsibility |
+|---|---|---|
+| Rakhimzhanova Alua | Factory Method, Builder | Exercise creation and lesson assembly |
+| Assiya Aitbayeva | Strategy, Observer | Review order and progress tracking |
+| Moldir Yerzhan | Decorator, Facade | Exercise enhancements and session control |
 
-2. Extract the complete ZIP.
+## Features
 
-3. On Windows, double-click START-FLUENTO.cmd.
+- Search topics by title or English vocabulary.
+- Study word cards before starting practice.
+- View a common British IPA transcription for every built-in word.
+- Reveal and hide word meanings.
+- Complete typed-answer and multiple-choice exercises.
+- Show or hide hints before submitting an answer.
+- Skip unknown answers and view feedback.
+- Repeat exercises using Sequential Review or Weak Words First.
+- Track round score, overall accuracy and progress for each topic.
+- Restart a round while retaining cumulative progress.
+- Use keyboard shortcuts throughout the learning session.
 
-4. Alternatively: `java -jar dist/fluento.jar`.
+## Topics
 
+Basics, Food, Travel, Daily Life, Family, Animals, Colours, Numbers, Weather, Clothes, School, City, Body, Nature, Actions and Feelings.
 
+The first four topics contain four words and eight exercises each. The remaining twelve contain eight words and sixteen exercises each. Every word has one typed-answer exercise and one multiple-choice exercise.
 
-The application has no runtime dependencies outside the JDK and works offline.
+## Technologies
 
-A graphical desktop is required. Java is not included in the archive.
+- Java 21
+- Swing
+- Maven
+- JUnit Jupiter 5.11.4
+- JaCoCo 0.8.12
+- GitHub Actions
 
+## Run the application
 
+### Prepared build
 
-## Build from source
+Install Java 21 or newer and extract the complete application archive.
 
-Use JDK 21 and Maven 3.9+ (also verified with Maven 4.0.0-rc-3).
+On Windows, run:
 
 ```text
-
-mvn clean verify
-
-java -jar target/fluento-1.0-SNAPSHOT.jar
-
+START-FLUENTO.cmd
 ```
 
-The first build needs Internet access to download Maven plugins and JUnit.
+Alternatively:
 
-In IntelliJ: open pom.xml, choose JDK 21, reload Maven, then run com.fluento.app.Main.
+```bash
+java -jar dist/fluento.jar
+```
 
-The old LessonsDemo entry point delegates to the same integrated application.
+The prepared application works offline and requires a graphical desktop. Java is not included in the archive.
 
+### Build from source
 
+Use JDK 21 and Maven 3.9 or newer.
 
-## Use
+```bash
+mvn clean verify
+java -jar target/fluento-1.0-SNAPSHOT.jar
+```
 
-Select Russian, Kazakh, or English definitions as the source language.
+The first build requires Internet access to download dependencies and build plugins.
 
-Select Sequential Review or Weak Words First before starting a topic.
+On Windows, `BUILD-FLUENTO.cmd` runs verification and copies the updated application into `dist/fluento.jar`.
 
-Each topic has four typed answers and four multiple-choice answers.
+### IntelliJ IDEA
 
-Use Show hint for a first-letter/length clue; check the answer, then advance.
+1. Open the project through `pom.xml`.
+2. Set Project SDK and Module SDK to Java 21.
+3. Reload the Maven project.
+4. Run `com.fluento.app.Main`.
 
-Use Word cards to reveal vocabulary meanings.
+## Learning workflow
 
-All lessons returns to the dashboard; Continue resumes the most recently started unfinished session.
+1. Select a source language and review strategy.
+2. Choose a topic or find one through search.
+3. Study its word cards and reveal meanings when needed.
+4. Select **Start practice**.
+5. Type an English answer or select an answer button.
+6. Check the answer, read the feedback and continue.
+7. Finish the round or restart it for another attempt.
 
-Start always creates a new round. Choosing a different topic replaces the resumable session.
+**All lessons** returns to the dashboard. **Continue** reopens the most recently started unfinished session. Starting a new topic creates a new round and replaces the resumable session.
 
-For weak-word review, keep the app open, return to All lessons, choose Weak Words First, and start again.
+A skipped exercise counts as an incorrect attempt and becomes eligible for weak-exercise review. After submission, the answer cannot be submitted again and the hint is hidden.
 
+## Keyboard shortcuts
 
-
-## Six patterns
-
-| Pattern | Main participants | Live use |
-
+| Context | Shortcut | Action |
 |---|---|---|
+| Word cards | Left / Right | Previous / next word |
+| Word cards | Space | Show / hide meaning |
+| Word cards | Alt+P | Open practice |
+| Practice | Enter | Check answer / continue |
+| Practice | Alt+H | Show / hide hint |
+| Practice | Alt+S | Skip the exercise |
+| Practice | Alt+1–4 | Select an answer option |
+| Controls | Tab | Move keyboard focus |
+| Focused button | Space | Activate the button |
 
-| Factory Method | ExerciseCreator, concrete creators, Exercise | Catalog creates two exercise types |
+## Design patterns
 
-| Builder | LessonBuilder, Lesson | Catalog assembles valid, immutable lessons |
+| Pattern | Main classes | Application |
+|---|---|---|
+| Factory Method | `ExerciseCreator`, `TranslationExerciseCreator`, `MultipleChoiceExerciseCreator` | Creates exercises through a shared creator contract |
+| Builder | `LessonBuilder`, `Lesson` | Assembles and validates lessons |
+| Strategy | `ReviewStrategy`, `SequentialReviewStrategy`, `WeakWordsFirstStrategy`, `ReviewSession` | Selects the exercise order |
+| Observer | `ProgressTracker`, `ProgressObserver`, `ProgressSnapshot` | Publishes progress updates to subscribers |
+| Decorator | `HintDecorator`, `FeedbackDecorator` | Adds hints and feedback while preserving the exercise contract |
+| Facade | `LessonFacade` | Coordinates answer checking, progression, score and progress |
 
-| Strategy | ReviewStrategy, SequentialReviewStrategy, WeakWordsFirstStrategy, ReviewSession | Facade chooses round ordering |
+Our catalog creates exercises through Factory Method, decorates them and assembles lessons through Builder. Strategy determines the round order. Facade controls the session, and Observer distributes progress updates.
 
-| Observer | ProgressTracker, ProgressObserver, ProgressSnapshot | Answers update the UI and StatisticsObserver |
+## Project structure
 
-| Decorator | HintDecorator, FeedbackDecorator, Exercise | Both decorators wrap catalog exercises |
+```text
+src/
+├── main/
+│   ├── java/com/fluento/
+│   │   ├── app/
+│   │   ├── model/
+│   │   ├── lessons/
+│   │   │   ├── builder/
+│   │   │   ├── catalog/
+│   │   │   ├── demo/
+│   │   │   ├── factory/
+│   │   │   └── ui/
+│   │   ├── progress/
+│   │   ├── review/
+│   │   └── session/
+│   └── resources/lessons/
+└── test/java/com/fluento/
 
-| Facade | LessonFacade | UI submits answers and advances through a single session API |
+docs/
+├── screenshots/
+└── uml/
+```
 
+## Progress and review rules
 
+We track three separate measures:
 
-## Scope and contracts
+- **Round score:** correct answers in the current round.
+- **Overall statistics:** correct and incorrect attempts across rounds.
+- **Topic progress:** unique exercises answered correctly at least once, out of eight or sixteen.
 
-- 16 topics, 112 words, 224 exercises per source language. UI labels are English.
+Repeated correct answers do not increase unique topic progress. Restarting resets round position and score while retaining cumulative statistics.
 
-- Progress is in memory for the current application window; closing it resets progress.
+Weak Words First sorts exercises by accumulated mistake count. Exercises with equal counts retain their original order. Correct answers do not erase earlier mistakes.
 
-- Statistics count attempts across rounds, not unique mastered words.
+Translation and multiple-choice exercises have distinct identifiers. Source-language modes share identifiers and therefore share progress.
 
-- Mistakes are lifetime counts within the window, keyed by exercise ID. Correct answers do not erase earlier mistakes.
+All progress remains in memory until the application window closes.
 
-- Translation and choice exercises have distinct IDs. Progress is shared across source languages.
+## Validation and error handling
 
-- Weak Words First is error-count ordering, not a timed spaced-repetition scheduler.
+We validate lesson fields, exercise identifiers, vocabulary and answer options. The session prevents blank submissions, duplicate answers, skipping answered exercises and advancing beyond a completed round.
 
-- Order is fixed at the start of a round. Changing settings affects the next new round.
+Progress snapshots and lesson lists use defensive copies. Observer failures are reported without blocking other subscribers, and nested notifications are delivered in chronological order.
 
-- All application state and observer callbacks run on the Swing event-dispatch thread.
+Application state and observer callbacks are designed to run on the Swing event-dispatch thread.
 
-- Observer RuntimeExceptions are reported and isolated; nested notifications are queued in chronological order.
+## Tests
 
-  Observers must terminate and must not generate an unbounded chain of answers.
+Run the complete verification:
 
-- No accounts, network, database, reminders, fuzzy spelling or disk persistence are implemented.
+```bash
+mvn clean verify
+```
 
+Our final local verification completed **913 tests with zero failures, errors or skipped tests**.
 
+| Coverage measure | Result |
+|---|---|
+| Lines | 643 / 695 — 92.5% |
+| Branches | 263 / 310 — 84.8% |
 
-## Verification and documentation
+The suite includes exercise checks in all three source languages, review ordering, decorators, progress notifications, session boundaries, restart behavior, topic search and Swing workflows.
 
-- `mvn clean verify`: JUnit and JaCoCo, reports in target/surefire-reports and target/site/jacoco.
+Reports are generated in:
 
-- Recreate actual Swing-component screen captures:
+```text
+target/surefire-reports/
+target/site/jacoco/
+```
 
-  `mvn test -Dfluento.captureDir=docs/screenshots`
+To regenerate application screenshots during the UI tests:
 
-- docs/Final_Report.pdf: report with UML, application screens, code excerpts and validation.
+```bash
+mvn test -Dfluento.captureDir=docs/screenshots
+```
 
-- docs/DEFENSE_RU.md: Russian defense and demonstration guide.
+The repository includes a GitHub Actions workflow for Java 21 verification. The figures above describe our local test run.
 
-- docs/HANDOFF_RU.md: safe GitHub import and team workflow.
+## Documentation
 
-- docs/PROVENANCE.md: source commits and assisted integration changes.
+- `docs/uml/` — editable UML diagrams.
+- `docs/screenshots/` — application screenshots.
+- `docs/VERIFICATION.md` — verification results.
+- `docs/PROVENANCE.md` — original contributions and assisted integration changes.
+- `docs/DEFENSE_RU.md` — demonstration and defense preparation.
+- `docs/HANDOFF_RU.md` — team integration instructions.
 
-- docs/VERIFICATION.md: measured results for this delivery.
+## Limitations and further work
 
-- docs/uml/: editable PlantUML diagrams.
+The current version does not include accounts, persistent storage, pronunciation audio or timed spaced repetition. Answer checking uses normalized exact English matches rather than synonyms or spelling correction.
 
+IPA transcriptions represent common British pronunciations; regional variants exist. The notation follows the [Cambridge Dictionary phonetics guide](https://dictionary.cambridge.org/help/phonetics.html).
 
-
-## Attribution
-
-Original team commits are identified in docs/PROVENANCE.md.
-
-This local delivery includes AI-assisted integration, fixes, tests, UI and documentation.
-
-It does not create commits on behalf of students or establish individual authorship.
-
-Each participant must review and understand their implementation and follow course disclosure rules.
-
-
-
-
-## Updated learning controls
-Word cards open first. British English IPA is shown for every built-in word.
-Use Start practice (Alt+P) when ready. Cards: Left/Right to move; Space to reveal/hide.
-Practice: Enter checks or advances; Alt+H toggles the hint; Alt+S skips;
-Alt+1 through Alt+4 select a multiple-choice button. Tab and Space also work on buttons.
-A skip reveals the solution, counts as incorrect, and is included in weak review.
-Restart round clears only round score and position; cumulative attempts and topic progress remain.
-Topic bars count unique exercise IDs answered correctly at least once (0–8), shared across source languages.
-Unknown pronunciation IDs have no transcription rather than an invented one.
-New rounds replace the current resumable round. Closing the window resets all progress.
-IPA is a common British pronunciation; regional alternatives exist.
-Reference convention: https://dictionary.cambridge.org/help/phonetics.html
-
-## Expanded catalog and search
-16 topics, 112 words and 224 exercises per source language. Search is case-insensitive and matches topic titles or English words. Clear the search field to restore all topics. The four original lessons have eight questions each; the twelve new topics have sixteen.
+Our planned improvements include persistent learner profiles, progress export, a review schedule based on answer history, additional vocabulary, accepted answer alternatives and broader accessibility testing.
