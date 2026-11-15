@@ -210,10 +210,6 @@ The repository includes a GitHub Actions workflow for Java 21 verification. The 
 - `docs/uml/` — editable UML diagrams.
 - `docs/screenshots/` — application screenshots.
 - `docs/VERIFICATION.md` — verification results.
-- `docs/PROVENANCE.md` — original contributions and assisted integration changes.
-- `docs/DEFENSE_RU.md` — demonstration and defense preparation.
-- `docs/HANDOFF_RU.md` — team integration instructions.
-
 ## Limitations and further work
 
 The current version does not include accounts, persistent storage, pronunciation audio or timed spaced repetition. Answer checking uses normalized exact English matches rather than synonyms or spelling correction.
