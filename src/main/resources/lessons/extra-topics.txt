@@ -1,0 +1,12 @@
+family|Family|mother,father,sister,brother,daughter,son,baby,family
+animals|Animals|cat,dog,bird,fish,horse,cow,sheep,rabbit
+colours|Colours|red,blue,green,yellow,black,white,pink,brown
+numbers|Numbers|one,two,three,four,five,six,seven,eight
+weather|Weather|sun,rain,snow,wind,cloud,storm,fog,ice
+clothes|Clothes|shirt,dress,skirt,coat,hat,shoe,sock,jacket
+school|School|pen,pencil,paper,desk,teacher,student,lesson,school
+city|City|street,shop,park,bridge,bank,hospital,museum,library
+body|Body|head,hand,eye,ear,nose,mouth,foot,arm
+nature|Nature|tree,flower,river,lake,mountain,forest,sea,beach
+actions|Actions|read,write,speak,listen,walk,run,sleep,eat
+feelings|Feelings|happy,sad,angry,tired,hungry,thirsty,afraid,calm

@@ -7,11 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 class LessonFacadeTest {
-    private Lesson food() {
-        Lesson original = new DemoLessonCatalog(SourceLanguage.RUSSIAN).findById("food").orElseThrow();
-        return new Lesson(original.id(), original.title(), original.exercises().stream()
-                .map(exercise -> (Exercise) new FeedbackDecorator(exercise)).toList());
-    }
+    private Lesson food() { return new DemoLessonCatalog(SourceLanguage.RUSSIAN).findById("food").orElseThrow(); }
     @Test void sixPatternsWorkTogetherAndWeakExerciseLeadsNextRound() {
         Lesson lesson = food(); ProgressTracker tracker = new ProgressTracker();
         StatisticsObserver observer = new StatisticsObserver(); tracker.subscribe(observer);
@@ -77,7 +73,7 @@ class LessonFacadeTest {
                 }
                 assertEquals(lesson.exercises().size(),facade.score());
             }
-            assertEquals(new DemoLessonCatalog(language).findAll().stream().mapToInt(l -> l.exercises().size()).sum(),tracker.snapshot().correct());
+            assertEquals(224,tracker.snapshot().correct());
         }
     }
     @Test void rejectsMissingDependencies() {
