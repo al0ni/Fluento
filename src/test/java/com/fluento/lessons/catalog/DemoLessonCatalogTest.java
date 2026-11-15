@@ -8,13 +8,13 @@ class DemoLessonCatalogTest {
     @Test
     void allLessonsConnectFactoriesBuilderAndVocabulary() {
         LessonCatalog catalog = new DemoLessonCatalog();
-        assertEquals(4, catalog.findAll().size());
+        assertEquals(16, catalog.findAll().size());
         var ids = new HashSet<String>();
         for (var lesson : catalog.findAll()) {
             assertSame(lesson, catalog.findById(lesson.id()).orElseThrow());
-            assertEquals(8, lesson.exercises().size());
             var words = catalog.wordsForLesson(lesson.id());
-            assertEquals(4, words.size());
+            assertEquals(words.size()*2, lesson.exercises().size());
+            assertTrue(words.size() == 4 || words.size() == 8);
             for (var exercise : lesson.exercises()) {
                 assertTrue(ids.add(exercise.id()), "Exercise ids should be globally unique in demo");
                 var word = words.stream()

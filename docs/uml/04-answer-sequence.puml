@@ -1,0 +1,24 @@
+@startuml
+title Answer submission and progress notification
+actor Learner
+participant LessonSessionPanel as UI
+participant LessonFacade as Facade
+participant "FeedbackDecorator\n(HintDecorator(Exercise))" as Exercise
+participant ProgressTracker as Tracker
+participant "ProgressObserver subscribers" as Observers
+Learner -> UI : Check answer
+UI -> Facade : submitAnswer(answer)
+Facade -> Facade : reject blank / repeated / completed
+Facade -> Exercise : checkAnswer(answer)
+Exercise --> Facade : AnswerResult
+Facade -> Facade : save result and round score
+Facade -> Tracker : recordAnswer(exerciseId, result)
+Tracker -> Tracker : update counters and enqueue snapshot
+loop each subscriber (errors isolated)
+Tracker -> Observers : onProgressUpdated(snapshot)
+end
+Facade --> UI : AnswerResult
+UI -> UI : show feedback, enable Next
+Learner -> UI : Next exercise
+UI -> Facade : nextExercise()
+@enduml

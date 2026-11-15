@@ -1,0 +1,36 @@
+@startuml
+title Strategy and Observer
+skinparam classAttributeIconSize 0
+interface ReviewStrategy {
++name(): String
++order(exercises, mistakes): List<Exercise>
+}
+class ReviewSession {
+-strategy: ReviewStrategy
++setStrategy(strategy)
++orderedExercises(mistakes)
+}
+class SequentialReviewStrategy
+class WeakWordsFirstStrategy
+ReviewSession --> ReviewStrategy : delegates
+ReviewStrategy <|.. SequentialReviewStrategy
+ReviewStrategy <|.. WeakWordsFirstStrategy
+interface ProgressObserver {
++onProgressUpdated(snapshot)
+}
+class ProgressTracker {
++subscribe(observer)
++unsubscribe(observer): boolean
++recordAnswer(id, result)
++snapshot(): ProgressSnapshot
+}
+class ProgressSnapshot <<record>>
+class StatisticsObserver
+class ConsoleProgressObserver
+class FluentoPanel
+ProgressTracker o-- "0..*" ProgressObserver : subscribers
+ProgressTracker ..> ProgressSnapshot : publishes
+ProgressObserver <|.. StatisticsObserver
+ProgressObserver <|.. ConsoleProgressObserver
+ProgressObserver <|.. FluentoPanel
+@enduml

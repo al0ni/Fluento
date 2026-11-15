@@ -1,24 +1,22 @@
-# Lesson architecture
+# Integrated architecture
+The original Factory Method and Builder module is retained and connected to the
+session, review, progress and decorator modules.
 
 ```mermaid
-classDiagram
-    Exercise <|.. TranslationExercise
-    Exercise <|.. MultipleChoiceExercise
-    ExerciseCreator <|-- TranslationExerciseCreator
-    ExerciseCreator <|-- MultipleChoiceExerciseCreator
-    TranslationExerciseCreator ..> TranslationExercise : creates
-    MultipleChoiceExerciseCreator ..> MultipleChoiceExercise : creates
-    LessonBuilder ..> Lesson : builds
-    Lesson o-- Exercise
-    DemoLessonCatalog ..> LessonBuilder : uses
-    DemoLessonCatalog ..> ExerciseCreator : uses
-    DemoLessonCatalog ..> SourceLanguage : loads vocabulary
-    LessonCatalog <|.. DemoLessonCatalog
-    LanguageLessonsPanel ..> DemoLessonCatalog : creates for selected language
-    LessonsPanel ..> LessonCatalog : reads
-    FlashcardsPanel ..> Word : displays
+flowchart LR
+  Catalog[DemoLessonCatalog] --> Factory[ExerciseCreator]
+  Factory --> Exercise[Exercise]
+  Catalog --> Builder[LessonBuilder]
+  Builder --> Lesson[Lesson]
+  Catalog --> Decorators[HintDecorator + FeedbackDecorator]
+  Decorators --> Exercise
+  UI[FluentoPanel / LessonSessionPanel] --> Facade[LessonFacade]
+  Facade --> Lesson
+  Facade --> Context[ReviewSession]
+  Context --> Strategy[ReviewStrategy]
+  Facade --> Exercise
+  Facade --> Tracker[ProgressTracker]
+  Tracker --> Observers[ProgressObserver subscribers]
+  Observers --> UI
 ```
-
-Factory Method creates exercises; Builder assembles them into lessons.
-SourceLanguage selects a UTF-8 vocabulary resource without modifying shared models.
-The session and progress modules remain the other team members' responsibility.
+See docs/uml for UML class and sequence diagrams with explicit relationship notation.

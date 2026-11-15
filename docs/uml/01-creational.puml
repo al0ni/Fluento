@@ -1,0 +1,39 @@
+@startuml
+title Factory Method and Builder
+skinparam classAttributeIconSize 0
+interface Exercise {
++id(): String
++view(): ExerciseView
++checkAnswer(answer: String): AnswerResult
+}
+abstract class ExerciseCreator {
+{abstract} +createExercise(word: Word): Exercise
++createExercises(words): List<Exercise>
+}
+class TranslationExercise
+class MultipleChoiceExercise
+class TranslationExerciseCreator
+class MultipleChoiceExerciseCreator
+class LessonBuilder {
++id(id): LessonBuilder
++title(title): LessonBuilder
++addExercise(exercise): LessonBuilder
++build(): Lesson
+}
+class Lesson {
++id: String
++title: String
++exercises: List<Exercise>
+}
+class DemoLessonCatalog
+Exercise <|.. TranslationExercise
+Exercise <|.. MultipleChoiceExercise
+ExerciseCreator <|-- TranslationExerciseCreator
+ExerciseCreator <|-- MultipleChoiceExerciseCreator
+TranslationExerciseCreator ..> TranslationExercise : creates
+MultipleChoiceExerciseCreator ..> MultipleChoiceExercise : creates
+DemoLessonCatalog ..> ExerciseCreator : uses
+DemoLessonCatalog ..> LessonBuilder : assembles
+LessonBuilder ..> Lesson : builds
+Lesson o-- Exercise : contains
+@enduml
