@@ -33,6 +33,10 @@ class SessionControlsTest {
    p.getActionMap().get("primary").actionPerformed(new ActionEvent(p,0,"primary"));assertEquals("translation-bread",s.currentExerciseId());
   });
  }
+ @Test void everyCatalogWordHasPronunciation(){for(var language:SourceLanguage.values()){
+  var catalog=new DemoLessonCatalog(language);for(var lesson:catalog.findAll())for(var word:catalog.wordsForLesson(lesson.id()))
+   assertFalse(Pronunciations.forWord(word.id()).isBlank(),word.id());
+ }assertEquals("",Pronunciations.forWord("unknown"));}
  @Test void standalonePanelRestartsWithoutAccumulatingButtons() throws Exception {
   SwingUtilities.invokeAndWait(()->{
    LessonFacade s=session();LessonSessionPanel panel=new LessonSessionPanel(s);
