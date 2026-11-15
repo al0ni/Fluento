@@ -3,6 +3,8 @@ package com.fluento.lessons.catalog;
 import com.fluento.lessons.builder.LessonBuilder;
 import com.fluento.lessons.factory.*;
 import com.fluento.model.*;
+import com.fluento.session.HintDecorator;
+import com.fluento.session.FeedbackDecorator;
 import java.util.*;
 
 public final class DemoLessonCatalog implements LessonCatalog {
@@ -39,6 +41,16 @@ public final class DemoLessonCatalog implements LessonCatalog {
                 word("work"),
                 word("home"),
                 word("book")));
+        try (var stream = Objects.requireNonNull(getClass().getResourceAsStream("/lessons/extra-topics.txt"))) {
+            String content = new String(stream.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+            for (String line : content.lines().filter(value -> !value.isBlank()).toList()) {
+                String[] fields = line.split("\\|", -1);
+                if (fields.length != 3) throw new IllegalStateException("Invalid topic definition");
+                add(fields[0], fields[1], Arrays.stream(fields[2].split(",")).map(this::word).toList());
+            }
+        } catch (java.io.IOException error) {
+            throw new IllegalStateException("Cannot load topics", error);
+        }
     }
 
     public SourceLanguage sourceLanguage() {
@@ -57,11 +69,22 @@ public final class DemoLessonCatalog implements LessonCatalog {
         ExerciseCreator translations = new TranslationExerciseCreator();
         ExerciseCreator choices = new MultipleChoiceExerciseCreator(words);
         Lesson lesson = new LessonBuilder().id(id).title(title)
-                .addExercises(translations.createExercises(words))
-                .addExercises(choices.createExercises(words))
+                .addExercises(exercisesWithHints(translations, words))
+                .addExercises(exercisesWithHints(choices, words))
                 .build();
         lessons.put(id, lesson);
         vocabulary.put(id, List.copyOf(words));
+    }
+
+    private List<Exercise> exercisesWithHints(ExerciseCreator creator, List<Word> words) {
+        List<Exercise> exercises = new ArrayList<>();
+        for (Word word : words) {
+            String english = word.english().strip();
+            String hint = "First letter: " + english.substring(0, 1)
+                    + "\n\nLength: " + english.length() + " letters.";
+            exercises.add(new FeedbackDecorator(new HintDecorator(creator.createExercise(word), hint)));
+        }
+        return exercises;
     }
 
     @Override

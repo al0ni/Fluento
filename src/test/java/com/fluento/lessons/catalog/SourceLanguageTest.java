@@ -15,7 +15,7 @@ class SourceLanguageTest {
     @EnumSource(SourceLanguage.class)
     void allLanguagesProvideCompleteLessonsAndEnglishAnswers(SourceLanguage language) {
         var catalog = new DemoLessonCatalog(language);
-        assertEquals(16, language.loadVocabulary().size());
+        assertEquals(112, language.loadVocabulary().size());
         for (var lesson : catalog.findAll()) {
             for (var word : catalog.wordsForLesson(lesson.id())) {
                 assertEquals(language.loadVocabulary().getProperty(word.id()), word.translation());

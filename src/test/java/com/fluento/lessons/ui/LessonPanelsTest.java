@@ -32,7 +32,7 @@ class LessonPanelsTest {
             var selected = new AtomicReference<Lesson>();
             var panel = new LessonsPanel(catalog, selected::set);
             var buttons = components(panel, JButton.class);
-            assertEquals(4, buttons.size());
+            assertEquals(16, buttons.size());
             buttons.get(1).doClick();
             assertSame(catalog.findById("food").orElseThrow(), selected.get());
         });
