@@ -12,6 +12,9 @@ public record ProgressSnapshot(
             throw new IllegalArgumentException("Counters must not be negative");
         }
         mistakesByExerciseId = Map.copyOf(mistakesByExerciseId);
+        if (mistakesByExerciseId.entrySet().stream().anyMatch(e -> e.getKey().isBlank() || e.getValue() < 0)) {
+            throw new IllegalArgumentException("Mistake IDs must not be blank and counts must not be negative");
+        }
     }
 
     public static ProgressSnapshot empty() {
