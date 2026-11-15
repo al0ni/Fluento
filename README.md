@@ -81,7 +81,7 @@ On Windows, `BUILD-FLUENTO.cmd` runs verification and copies the updated applica
 1. Open the project through `pom.xml`.
 2. Set Project SDK and Module SDK to Java 21.
 3. Reload the Maven project.
-4. Run `com.fluento.app.Main`.
+4. Run `com.fluento.Main`.
 
 ## Learning workflow
 
@@ -130,19 +130,24 @@ Our catalog creates exercises through Factory Method, decorates them and assembl
 src/
 ├── main/
 │   ├── java/com/fluento/
-│   │   ├── app/
-│   │   ├── model/
-│   │   ├── lessons/
-│   │   │   ├── builder/
-│   │   │   ├── catalog/
-│   │   │   ├── demo/
-│   │   │   ├── factory/
-│   │   │   └── ui/
-│   │   ├── progress/
-│   │   ├── review/
-│   │   └── session/
+│   │   ├── Main.java
+│   │   ├── factory/
+│   │   │   └── model/
+│   │   ├── builder/
+│   │   │   └── catalog/
+│   │   ├── strategy/
+│   │   ├── observer/
+│   │   ├── decorator/
+│   │   └── facade/
+│   │       ├── ui/
+│   │       └── demo/
 │   └── resources/lessons/
 └── test/java/com/fluento/
+    ├── factory/
+    ├── builder/
+    ├── strategy/
+    ├── observer/
+    └── facade/
 
 docs/
 ├── screenshots/
@@ -181,7 +186,7 @@ Run the complete verification:
 mvn clean verify
 ```
 
-Our final local verification completed **913 tests with zero failures, errors or skipped tests**.
+Our final local verification completed **915 tests with zero failures, errors or skipped tests**.
 
 | Coverage measure | Result |
 |---|---|

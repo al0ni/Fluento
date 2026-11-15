@@ -1,0 +1,55 @@
+@startuml
+!pragma layout smetana
+title Fluento six pattern package structure
+package com.fluento {
+ class Main
+ package factory {
+  interface Exercise
+  abstract class ExerciseCreator
+  package model {
+   class Word
+   class Lesson
+  }
+ }
+ package builder {
+  class LessonBuilder
+  package catalog {
+   class DemoLessonCatalog
+  }
+ }
+ package strategy {
+  interface ReviewStrategy
+  class ReviewSession
+ }
+ package observer {
+  class ProgressTracker
+  interface ProgressObserver
+ }
+ package decorator {
+  class HintDecorator
+  class FeedbackDecorator
+ }
+ package facade {
+  class LessonFacade
+  package ui {
+   class FluentoPanel
+   class LessonSessionPanel
+   class FlashcardsPanel
+  }
+ }
+}
+Main --> FluentoPanel
+FluentoPanel --> DemoLessonCatalog
+FluentoPanel --> LessonFacade
+DemoLessonCatalog --> ExerciseCreator
+DemoLessonCatalog --> LessonBuilder
+LessonBuilder --> Lesson
+HintDecorator ..|> Exercise
+FeedbackDecorator ..|> Exercise
+LessonFacade --> ReviewSession
+ReviewSession --> ReviewStrategy
+LessonFacade --> Exercise
+LessonFacade --> ProgressTracker
+FluentoPanel ..|> ProgressObserver
+ProgressTracker --> ProgressObserver
+@enduml

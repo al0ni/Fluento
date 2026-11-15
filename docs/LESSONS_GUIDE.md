@@ -1,5 +1,5 @@
 # Lessons and exercises
-The final application starts from com.fluento.app.Main.
+The final application starts from com.fluento.Main.
 LessonsDemo delegates to Main for backward compatibility.
 See README.md for build, run, review and progress behavior.
 
