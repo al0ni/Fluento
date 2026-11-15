@@ -30,7 +30,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.4.2</version>
                 <configuration>
-                    <archive><manifest><mainClass>com.fluento.app.Main</mainClass></manifest></archive>
+                    <archive><manifest><mainClass>com.fluento.Main</mainClass></manifest></archive>
                 </configuration>
             </plugin>
             <plugin>
