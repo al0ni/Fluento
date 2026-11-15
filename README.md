@@ -148,10 +148,6 @@ src/
     в”њв”Ђв”Ђ strategy/
     в”њв”Ђв”Ђ observer/
     в””в”Ђв”Ђ facade/
-
-docs/
-в”њв”Ђв”Ђ screenshots/
-в””в”Ђв”Ђ uml/
 ```
 
 ## Progress and review rules
@@ -202,19 +198,8 @@ target/surefire-reports/
 target/site/jacoco/
 ```
 
-To regenerate application screenshots during the UI tests:
-
-```bash
-mvn test -Dfluento.captureDir=docs/screenshots
-```
-
 The repository includes a GitHub Actions workflow for Java 21 verification. The figures above describe our local test run.
 
-## Documentation
-
-- `docs/uml/` вЂ” editable UML diagrams.
-- `docs/screenshots/` вЂ” application screenshots.
-- `docs/VERIFICATION.md` вЂ” verification results.
 ## Limitations and further work
 
 The current version does not include accounts, persistent storage, pronunciation audio or timed spaced repetition. Answer checking uses normalized exact English matches rather than synonyms or spelling correction.
